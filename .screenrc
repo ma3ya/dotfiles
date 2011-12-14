@@ -1,0 +1,44 @@
+# 起動時に著作権表示を行うかどうかを選択
+startup_message off # コマンド実行のprefixを'C-a'から'C-f'に変更
+escape ^F^F
+
+# スクロールバッファの大木さを指定
+defscrollback 100000
+
+# デタッチまわりの設定
+# - on  接続断の時に自動的にデタッチされる
+# - off 接続断の時に実行中の全プロセスが強制終了される。
+autodetach on
+
+# デフォルトのエンコーディングを指定
+defencoding utf8
+
+# メッセージが表示される時間を定義
+msgwait 2
+
+# ステータスラインを設定
+hardstatus alwayslastline "[%02c] %`%-w%{=b bw}%n %t%{-}%+w"
+
+# visualベルの停止
+vbell off
+
+# 新しいシェルを生成するために使うコマンドを設定
+shell bash
+
+# ショートカット
+bind h prev                # 前のタブに移動
+bind k next                # 後ろのタブに移動
+bind u only                # 画面の統合
+bind p split               # 画面の分割
+bind j focus               # 分割時、次のウィンドウに移動
+bind s colon 'screen ssh ' # 別ウィンドウを開いてssh
+
+# 分割したウィンドウのリサイズ
+bind r eval 'echo "Resize window"' 'command -c resize'
+bind -c resize ^[ command
+bind -c resize j eval 'resize +1' 'command -c resize'
+bind -c resize k eval 'resize -1' 'command -c resize'
+
+# 256 color
+#term xterm-256color
+termcapinfo xterm* 'Co#256:pa#32767:AB=\E[48;5;%dm:AF=\E[38;5;%dm:'
