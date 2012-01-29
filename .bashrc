@@ -29,14 +29,14 @@ alias cp="cp -ir"
 alias rm="rm -ir"
 alias virc="vi ~/.bashrc"
 alias sorc="source ~/.bashrc"
-alias vivimrc="vi ~/.vimrc"
+alias vimrc="vi ~/.vimrc"
 
 #===================================
 # local settings.
 #===================================
 # Prompt
 PROMPT_COLOR="${ESC}3`expr \`date +%s\` % 6 + 1`m"
-PS1="${PROMPT_COLOR}[\u: \W]$ \[\033[0m\]"
+PS1="${PROMPT_COLOR}[\u: \W]$ ${DEFAULT}"
 
 # Alias
 alias ls="clear;pwd;ls --color=auto -GF"

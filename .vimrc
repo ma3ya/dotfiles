@@ -23,14 +23,6 @@ set hlsearch
 " 検索時にファイルの最後まで言ったら最初に戻る(nowrapscan:戻らない)
 set wrapscan
 
-" === 編集まわり ===
-" vi互換モードにしない
-set nocompatible
-" バックアップファイルを作らない
-set nobackup
-" スワップファイル作らない
-set noswapfile
-
 " === 表示まわり ===
 " タイトルを表示しない(Thanks for flying Vim 対策)
 set notitle
@@ -42,13 +34,6 @@ set showmatch
 set laststatus=2
 " ステータスラインに文字コードと改行コード表示
 set statusline=%F%m%r%h%w\ [%{&fenc!=''?&fenc:&enc}]\[%{&ff}]\%=\[%l/%L]
-" カラー表示
-" ex) default, elflord, morning, perchpuff, torte, blue, delek, evening
-"     , murphy, ron, zellner, darkblue, desert, koehler, pablo, shine
-syntax on
-colorscheme elflord
-" 行番号設定
-highlight LineNr ctermfg=2
 " オートインデント
 set autoindent
 " C言語のコードを自動的にインデントする
@@ -66,8 +51,27 @@ set tabstop=4
 set shiftwidth=4
 " インデントをTabではなくスペースにする
 set expandtab
+" 全角スペースをハイライト
+augroup highlightldegraphicSpace
+  autocmd!
+  autocmd ColorScheme * highlight ldeographicSpace term=underline ctermbg=DarkGreen guibg=DarkGreen
+  autocmd VimEnter,WinEnter * match ldeographicSpace /　/
+augroup END
+" カラー表示
+" ex) default, elflord, morning, perchpuff, torte, blue, delek, evening
+"     , murphy, ron, zellner, darkblue, desert, koehler, pablo, shine
+syntax on
+colorscheme elflord
+" 行番号設定
+highlight LineNr ctermfg=2
 
 " === 機能まわり ===
+" vi互換モードにしない
+set nocompatible
+" バックアップファイルを作らない
+set nobackup
+" スワップファイル作らない
+set noswapfile
 " コマンドライン補完するときに強化されたものを使う
 set wildmenu
 "<BS>キーがつかえる範囲
@@ -88,63 +92,28 @@ nmap c :%foldclose<CR>
 nmap <ESC><ESC> :nohlsearch<CR>
 " 保存時に行末の空白を削除する
 autocmd BufWritePre * :%s/\s\+$//ge
-
-" === 環境変数まわり ===
-" Desktop を環境変数に設定
-"let $DESKTOP='F:\Users\msy\Desktop'
-
-" === Pythonまわり ===
-" Python 用設定
-autocmd FileType python setl autoindent
-autocmd FileType python setl smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
-autocmd FileType python setl tabstop=8 expandtab shiftwidth=4 softtabstop=4
-
-" === 全角スペースをハイライト ===
-"augroup highlightldegraphicSpace
-"  autocmd!
-"  autocmd ColorScheme * highlight ldeographicSpace term=underline ctermbg=DarkGreen guibg=DarkGreen
-"  autocmd VimEnter,WinEnter * match ldeographicSpace /　/
-"augroup END
-"colorscheme default
-
-" ■とか○の文字があってもカーソル位置がずれないようにする。
-if exists('&ambiwidth')
-  set ambiwidth=double
-endif
-
 " .vimrc を開く
-"nnoremap ,. :<C-u>edit $MYVIMRC<CR>
 nnoremap ,. :tabnew $MYVIMRC<CR>
 " .vimrc の即時反映
 nnoremap ,s. :<C-u>source $MYVIMRC<CR>
 
-"" vundle
-"set rtp+=~/.vim/vundle.git/
-"call vundle#rc()
-"
-"" vundle で入れた plugin
-"Bundle 'quickrun.vim'
-"Bundle 'neocomplcache'
-"Bundle 'eregex.vim'
-"Bundle 'gtags.vim'
-"Bundle 'unite.vim'
-"Bundle 'git://github.com/Shougo/vimshell.git'
-"
-"" neocomplcache
-"let g:neocomplcache_enable_at_startup = 1
-"
-"" gtags
-"" 検索結果Windowを閉じる
-"nnoremap <C-q> <C-w><C-w><C-w>q
-"" Grep 準備
-"nnoremap <C-g> :Gtags -g
-"" このファイルの関数一覧
-"nnoremap <C-l> :Gtags -f %<CR>
-"" カーソル以下の定義元を探す
-"nnoremap <C-j> :Gtags <C-r><C-w><CR>
-"" カーソル以下の使用箇所を探す
-"nnoremap <C-k> :Gtags -r <C-r><C-w><CR>
-"" 次の検索結果
-"nnoremap <C-n> :cn<CR>
-"" 前の検索結果
-"nnoremap <C-p> :cp<CR>
+
+" === Plugins ===
+" neobundle
+" $ git clone git://github.com/Shougo/neobundle.vim.git ~/.vim/bundle/neobundle.vim
+filetype off
+if has('vim_starting')
+  set runtimepath+=~/.vim/bundle/neobundle.vim
+  call neobundle#rc(expand('~/.vim/bundle'))
+endif
+filetype plugin indent on
+
+" -- Plugin list --
+NeoBundle 'git://github.com/Shougo/neobundle.vim.git'
+NeoBundle 'git://github.com/Shougo/neocomplcache.git'
+NeoBundle 'git://github.com/thinca/vim-quickrun.git'
+
+
+" === Plugin Settings ===
+" neocomplcache
+let g:neocomplcache_enable_at_startup = 1
