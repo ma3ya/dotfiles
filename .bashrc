@@ -36,7 +36,7 @@ alias vimrc="vi ~/.vimrc"
 #===================================
 # Prompt
 PROMPT_COLOR="${ESC}3`expr \`date +%s\` % 6 + 1`m"
-PS1="${PROMPT_COLOR}[\u: \W]$ ${DEFAULT}"
+PS1="${PROMPT_COLOR}[\u: \W]$ \[\033[0m\]"
 
 # Alias
 alias ls="clear;pwd;ls --color=auto -GF"
