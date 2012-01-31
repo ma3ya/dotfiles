@@ -85,18 +85,39 @@ set nrformats=octal
 " 折りたたみオプション
 set foldmethod=marker
 " 埋め込まれるマーカーを囲むコメントの形式を変更
-set commentstring=#%s
+set commentstring=//%s
 " 折りたたみコマンドのショートカット
 nmap c :%foldclose<CR>
 " 検索結果のハイライトの停止
 nmap <ESC><ESC> :nohlsearch<CR>
+" マウスの設定
+set mouse=a
+set ttymouse=xterm2
 " 保存時に行末の空白を削除する
-autocmd BufWritePre * :%s/\s\+$//ge
+augroup removeEndSpace
+  autocmd!
+  autocmd BufWritePre * :%s/\s\+$//ge
+augroup END
 " .vimrc を開く
 nnoremap ,. :tabnew $MYVIMRC<CR>
 " .vimrc の即時反映
 nnoremap ,s. :<C-u>source $MYVIMRC<CR>
 
+" === テンプレート ===
+augroup template
+  autocmd!
+  " .php
+  autocmd BufNewFile *.php 0r $HOME/.vim/template/php.txt
+  " .inc
+  autocmd BufNewFile *.inc 0r $HOME/.vim/template/php.txt
+augroup END
+
+" === PHP 設定 ===
+augroup phpsyntaxcheck
+  autocmd!
+  autocmd BufWrite *.php w !php -l
+  autocmd BufWrite *.inc w !php -l
+augroup END
 
 " === Plugins ===
 " neobundle
@@ -112,8 +133,28 @@ filetype plugin indent on
 NeoBundle 'git://github.com/Shougo/neobundle.vim.git'
 NeoBundle 'git://github.com/Shougo/neocomplcache.git'
 NeoBundle 'git://github.com/thinca/vim-quickrun.git'
-
+NeoBundle 'git://github.com/thinca/vim-ref.git'
+NeoBundle 'gtags.vim'
 
 " === Plugin Settings ===
 " neocomplcache
 let g:neocomplcache_enable_at_startup = 1
+
+" vim-ref
+let g:ref_phpmanual_path = '/home/msy/.vim/dict/phpmanual'
+
+" gtags
+" 検索結果windowを閉じる
+nnoremap <C-z> <C-w><C-w>:q<CR>
+" Grep 準備
+nnoremap <C-g> :Gtags -g
+" このファイルの関数一覧
+nnoremap <C-l> :Gtags -f %<CR>
+" カーソル以下の定義もとを探す
+nnoremap <C-j> :Gtags <C-r><C-w><CR>
+" カーソル以下の使用箇所を探す
+nnoremap <C-k> :Gtags -r <C-r><C-w><CR>
+" 次の検索結果
+nnoremap <C-n> :cn<CR>
+" 前の検索結果
+nnoremap <C-p> :cp<CR>
