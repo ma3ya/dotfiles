@@ -18,6 +18,7 @@ msgwait 2
 
 # ステータスラインを設定
 hardstatus alwayslastline "[%02c] %`%-w%{=b bw}%n %t%{-}%+w"
+sorendition "Gb"
 
 # visualベルの停止
 vbell off
