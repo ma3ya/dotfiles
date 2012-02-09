@@ -134,6 +134,7 @@ NeoBundle 'git://github.com/Shougo/neobundle.vim.git'
 NeoBundle 'git://github.com/Shougo/neocomplcache.git'
 NeoBundle 'git://github.com/thinca/vim-quickrun.git'
 NeoBundle 'git://github.com/thinca/vim-ref.git'
+NeoBundle 'git://github.com/tpope/vim-markdown.git'
 NeoBundle 'gtags.vim'
 
 " === Plugin Settings ===
@@ -148,6 +149,9 @@ augroup neocomplcache_settings
   autocmd FileType php setlocal omnifunc=phpscriptcomplete#CompletePHP
   autocmd FileType c setlocal omnifunc=ccomplete#Complete
 augroup END
+
+" quickrun
+let g:quickrun_config = {'markdown': {'command': 'convert_md'}}
 
 " vim-ref
 let g:ref_phpmanual_path = '/home/msy/.vim/dict/phpmanual'
