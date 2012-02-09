@@ -1,13 +1,13 @@
-$B@_Dj%U%!%$%k(B
+設定ファイル
 ============
 
-$BH?1GJ}K!(B
+反映方法
 --------
-git $B$+$i(B clone
+git から clone
 
     $ git clone git://github.com/ma3ya/dotfiles.git
 
-$B@_Dj%U%!%$%k$N@_CV(B
+設定ファイルの設置
 
     $ cd dotfiles
     $ sh bootstrap.sh
