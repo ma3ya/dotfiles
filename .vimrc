@@ -135,6 +135,7 @@ NeoBundle 'git://github.com/Shougo/neocomplcache.git'
 NeoBundle 'git://github.com/thinca/vim-quickrun.git'
 NeoBundle 'git://github.com/thinca/vim-ref.git'
 NeoBundle 'git://github.com/tpope/vim-markdown.git'
+NeoBundle 'git://github.com/Shougo/vimproc.git'
 NeoBundle 'gtags.vim'
 
 " === Plugin Settings ===
@@ -150,8 +151,20 @@ augroup neocomplcache_settings
   autocmd FileType c setlocal omnifunc=ccomplete#Complete
 augroup END
 
+" vimproc
+" make -f make_gcc.mak
+
 " quickrun
 let g:quickrun_config = {'markdown': {'command': 'convert_md'}}
+augroup QuickRunPHPUnit
+    autocmd!
+    autocmd BufWinEnter,BufNewFile *Test.php set filetype=php.phpunit
+augroup END
+
+let g:quickrun_config['_'] = {'runner' : 'vimproc:100'}
+let g:quickrun_config['php.phpunit'] = {}
+let g:quickrun_config['php.phpunit']['command'] = 'phpunit'
+let g:quickrun_config['php.phpunit']['exec'] = '%c %o %s'
 
 " vim-ref
 let g:ref_phpmanual_path = '/home/msy/.vim/dict/phpmanual'
