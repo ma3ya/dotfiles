@@ -113,11 +113,11 @@ augroup template
 augroup END
 
 " === PHP 設定 ===
-augroup phpsyntaxcheck
-  autocmd!
-  autocmd BufWrite *.php w !php -l
-  autocmd BufWrite *.inc w !php -l
-augroup END
+"augroup phpsyntaxcheck
+"  autocmd!
+"  autocmd BufWrite *.php w !php -l
+"  autocmd BufWrite *.inc w !php -l
+"augroup END
 
 " === Plugins ===
 " neobundle
@@ -134,6 +134,7 @@ NeoBundle 'git://github.com/Shougo/neobundle.vim.git'
 NeoBundle 'git://github.com/Shougo/neocomplcache.git'
 NeoBundle 'git://github.com/thinca/vim-quickrun.git'
 NeoBundle 'git://github.com/thinca/vim-ref.git'
+NeoBundle 'git://github.com/Shougo/vimshell.git'
 NeoBundle 'git://github.com/tpope/vim-markdown.git'
 NeoBundle 'git://github.com/Shougo/vimproc.git'
 NeoBundle 'gtags.vim'
@@ -152,7 +153,7 @@ augroup neocomplcache_settings
 augroup END
 
 " vimproc
-" make -f make_gcc.mak
+" $ make -f make_gcc.mak
 
 " quickrun
 let g:quickrun_config = {'markdown': {'command': 'convert_md'}}
