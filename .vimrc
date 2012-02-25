@@ -137,6 +137,7 @@ NeoBundle 'git://github.com/thinca/vim-ref.git'
 NeoBundle 'git://github.com/Shougo/vimshell.git'
 NeoBundle 'git://github.com/tpope/vim-markdown.git'
 NeoBundle 'git://github.com/Shougo/vimproc.git'
+NeoBundle 'git://github.com/tsaleh/vim-align.git'
 NeoBundle 'gtags.vim'
 
 " === Plugin Settings ===
