@@ -1,22 +1,13 @@
 #===================================
 # common settings.
 #===================================
-# Color
-export ESC="\033["
-export BLACK="${ESC}30m\]"
-export RED="${ESC}31m\]"
-export GREEN="${ESC}32m\]"
-export YELLOW="${ESC}33m\]"
-export BLUE="${ESC}34m\]"
-export PURPLE="${ESC}35m\]"
-export LIGHTBLUE="${ESC}36m\]"
-export DEFAULT="${ESC}0m\]"
-
 # Vi mode
 set -o vi
 
 # Path
-export PATH=${PATH}:~/.bin
+if [[ ${TERM} != screen ]]; then
+  export PATH=${HOME}/.bin:${PATH}:
+fi
 
 # Alias
 alias grep="grep --color=auto"
@@ -34,11 +25,12 @@ alias vimrc="vi ~/.vimrc"
 #===================================
 # local settings.
 #===================================
-# Prompt
-PROMPT_COLOR="${ESC}3`expr \`date +%s\` % 6 + 1`m"
-PS1="${PROMPT_COLOR}[\u: \W]$ \[\033[0m\]"
-
 # Alias
 alias ls="clear;pwd;ls --color=auto -GF"
 
-PROMPT_COMMAND="source ~/.bashrc"
+# nodejs
+if [[ ${TERM} != screen && -f ~/.nodebrew/nodebrew ]]; then
+  export PATH=${HOME}/.nodebrew/current/bin:${PATH}
+fi
+
+PROMPT_COMMAND="[[ -f ~/.bash_ps ]] && source ~/.bash_ps"

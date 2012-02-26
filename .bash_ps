@@ -1,0 +1,14 @@
+# Color
+ESC="\033["
+BLACK="${ESC}30m\]"
+RED="${ESC}31m\]"
+GREEN="${ESC}32m\]"
+YELLOW="${ESC}33m\]"
+BLUE="${ESC}34m\]"
+PURPLE="${ESC}35m\]"
+LIGHTBLUE="${ESC}36m\]"
+DEFAULT="${ESC}0m\]"
+
+# Prompt
+PROMPT_COLOR="${ESC}3`expr \`date +%s\` % 6 + 1`m"
+PS1="${PROMPT_COLOR}[\u: \W]$ \[\033[0m\]"

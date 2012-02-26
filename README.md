@@ -10,4 +10,4 @@ git から clone
 設定ファイルの設置
 
     $ cd dotfiles
-    $ sh bootstrap.sh
+    $ ./bootstrap.sh
