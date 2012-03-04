@@ -5,9 +5,7 @@
 set -o vi
 
 # Path
-if [[ ${TERM} != screen ]]; then
-  export PATH=${HOME}/.bin:${PATH}:
-fi
+[[ ${TERM} != screen ]] && export PATH=${HOME}/.bin:${PATH}:
 
 # Alias
 alias grep="grep --color=auto"
