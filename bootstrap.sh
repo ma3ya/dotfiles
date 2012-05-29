@@ -5,5 +5,6 @@ DIR=`pwd`
 [ -f ~/.bash_ps ]  || ln -s ${DIR}/.bash_ps  ~/.bash_ps
 [ -f ~/.vimrc ]    || ln -s ${DIR}/.vimrc    ~/.vimrc
 [ -f ~/.screenrc ] || ln -s ${DIR}/.screenrc ~/.screenrc
+[ -f ~/.gitconfig ] || ln -s ${DIR}/.gitconfig ~/.gitconfig
 
 source ~/.bashrc
