@@ -1,0 +1,15 @@
+[user]
+	name = Masaya Ozawa
+	email = ma3ya.ozw@gmail.com
+[color]
+	status = auto
+	diff = auto
+	branch = auto
+[core]
+	autocrlf = input
+	editor = vim
+[alias]
+	st = status
+	stat = status
+	br = branch
+	ba = branch -a
