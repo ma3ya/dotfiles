@@ -52,16 +52,16 @@ set shiftwidth=4
 " インデントをTabではなくスペースにする
 set expandtab
 " 全角スペースをハイライト
-augroup highlightldegraphicSpace
-  autocmd!
-  autocmd ColorScheme * highlight ldeographicSpace term=underline ctermbg=DarkGreen guibg=DarkGreen
-  autocmd VimEnter,WinEnter * match ldeographicSpace /　/
-augroup END
+"augroup highlightldegraphicSpace
+"  autocmd!
+"  autocmd ColorScheme * highlight ldeographicSpace term=underline ctermbg=DarkGreen guibg=DarkGreen
+"  autocmd VimEnter,WinEnter * match ldeographicSpace /　/
+"augroup END
 " カラー表示
 " ex) default, elflord, morning, perchpuff, torte, blue, delek, evening
 "     , murphy, ron, zellner, darkblue, desert, koehler, pablo, shine
-syntax on
-colorscheme elflord
+"syntax enable
+"colorscheme elflord
 " 行番号設定
 highlight LineNr ctermfg=2
 
@@ -138,6 +138,7 @@ NeoBundle 'git://github.com/Shougo/vimshell.git'
 NeoBundle 'git://github.com/tpope/vim-markdown.git'
 NeoBundle 'git://github.com/Shougo/vimproc.git'
 NeoBundle 'git://github.com/tsaleh/vim-align.git'
+NeoBundle 'git://github.com/altercation/vim-colors-solarized.git'
 NeoBundle 'gtags.vim'
 
 " === Plugin Settings ===
@@ -170,6 +171,12 @@ let g:quickrun_config['php.phpunit']['exec'] = '%c %o %s'
 
 " vim-ref
 let g:ref_phpmanual_path = '/home/msy/.vim/dict/phpmanual'
+
+" solarized
+syntax enable
+set background=light
+let g:solarized_termcolors=256
+colorscheme solarized
 
 " gtags
 " 検索結果windowを閉じる
