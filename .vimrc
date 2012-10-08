@@ -33,7 +33,7 @@ set showmatch
 " 常にステータス行を表示する
 set laststatus=2
 " ステータスラインに文字コードと改行コード表示
-set statusline=%F%m%r%h%w\ [%{&fenc!=''?&fenc:&enc}]\[%{&ff}]\%=\[%l/%L]
+"set statusline=%F%m%r%h%w\ [%{&fenc!=''?&fenc:&enc}]\[%{&ff}]\%=\[%l/%L]
 " オートインデント
 set autoindent
 " C言語のコードを自動的にインデントする
@@ -52,18 +52,18 @@ set shiftwidth=4
 " インデントをTabではなくスペースにする
 set expandtab
 " 全角スペースをハイライト
-"augroup highlightldegraphicSpace
-"  autocmd!
-"  autocmd ColorScheme * highlight ldeographicSpace term=underline ctermbg=DarkGreen guibg=DarkGreen
-"  autocmd VimEnter,WinEnter * match ldeographicSpace /　/
-"augroup END
+augroup highlightldegraphicSpace
+  autocmd!
+  autocmd ColorScheme * highlight ldeographicSpace term=underline ctermbg=DarkGreen guibg=DarkGreen
+  autocmd VimEnter,WinEnter * match ldeographicSpace /　/
+augroup END
 " カラー表示
 " ex) default, elflord, morning, perchpuff, torte, blue, delek, evening
 "     , murphy, ron, zellner, darkblue, desert, koehler, pablo, shine
 "syntax enable
 "colorscheme elflord
-" 行番号設定
-highlight LineNr ctermfg=2
+"" 行番号設定
+"highlight LineNr ctermfg=2
 
 " === 機能まわり ===
 " vi互換モードにしない
@@ -139,6 +139,9 @@ NeoBundle 'git://github.com/tpope/vim-markdown.git'
 NeoBundle 'git://github.com/Shougo/vimproc.git'
 NeoBundle 'git://github.com/tsaleh/vim-align.git'
 NeoBundle 'git://github.com/altercation/vim-colors-solarized.git'
+NeoBundle 'git://github.com/scrooloose/nerdtree.git'
+NeoBundle 'git://github.com/tpope/vim-fugitive.git'
+NeoBundle 'git://github.com/Lokaltog/vim-powerline.git'
 NeoBundle 'gtags.vim'
 
 " === Plugin Settings ===
@@ -160,8 +163,8 @@ augroup END
 " quickrun
 let g:quickrun_config = {'markdown': {'command': 'convert_md'}}
 augroup QuickRunPHPUnit
-    autocmd!
-    autocmd BufWinEnter,BufNewFile *Test.php set filetype=php.phpunit
+  autocmd!
+  autocmd BufWinEnter,BufNewFile *Test.php set filetype=php.phpunit
 augroup END
 
 let g:quickrun_config['_'] = {'runner' : 'vimproc:100'}
@@ -174,9 +177,19 @@ let g:ref_phpmanual_path = '/home/msy/.vim/dict/phpmanual'
 
 " solarized
 syntax enable
-set background=light
-let g:solarized_termcolors=256
+set background=dark
+"set background=light
 colorscheme solarized
+
+" NERD Tree
+let file_name = expand("%")
+if has('vim_starting') && file_name == ""
+  autocmd VimEnter * NERDTree ./
+endif
+nnoremap <silent> <C-e> :NERDTreeToggle<CR>
+
+" Powerline
+let g:Powerline_symbols='fancy'
 
 " gtags
 " 検索結果windowを閉じる
