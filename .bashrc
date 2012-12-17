@@ -24,7 +24,8 @@ alias vimrc="vi ~/.vimrc"
 # local settings.
 #===================================
 # Alias
-alias ls="clear;pwd;ls --color=auto -GF"
+alias ls="clear;pwd;ls -GF"
+alias vertical="grep -o ."
 
 # nodejs
 if [[ ${TERM} != screen && -f ~/.nodebrew/nodebrew ]]; then
