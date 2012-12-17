@@ -142,6 +142,8 @@ NeoBundle 'git://github.com/altercation/vim-colors-solarized.git'
 NeoBundle 'git://github.com/scrooloose/nerdtree.git'
 NeoBundle 'git://github.com/tpope/vim-fugitive.git'
 NeoBundle 'git://github.com/Lokaltog/vim-powerline.git'
+NeoBundle 'git://github.com/StanAngeloff/php.vim.git'
+NeoBundle 'git://github.com/vim-scripts/sudo.vim.git'
 NeoBundle 'gtags.vim'
 
 " === Plugin Settings ===
@@ -158,7 +160,7 @@ augroup neocomplcache_settings
 augroup END
 
 " vimproc
-" $ make -f make_gcc.mak
+" $ make -f make_unix.mak
 
 " quickrun
 let g:quickrun_config = {'markdown': {'command': 'convert_md'}}
@@ -167,7 +169,7 @@ augroup QuickRunPHPUnit
   autocmd BufWinEnter,BufNewFile *Test.php set filetype=php.phpunit
 augroup END
 
-let g:quickrun_config['_'] = {'runner' : 'vimproc:100'}
+let g:quickrun_config['_'] = {'runner': 'vimproc', 'runner/vimproc/updatetime': 40,}
 let g:quickrun_config['php.phpunit'] = {}
 let g:quickrun_config['php.phpunit']['command'] = 'phpunit'
 let g:quickrun_config['php.phpunit']['exec'] = '%c %o %s'
@@ -180,6 +182,7 @@ syntax enable
 set background=dark
 "set background=light
 colorscheme solarized
+let g:solarized_termcolors=256
 
 " NERD Tree
 let file_name = expand("%")
