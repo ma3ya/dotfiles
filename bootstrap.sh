@@ -7,4 +7,10 @@ DIR=`pwd`
 [ -f ~/.screenrc ] || ln -s ${DIR}/.screenrc ~/.screenrc
 [ -f ~/.gitconfig ] || ln -s ${DIR}/.gitconfig ~/.gitconfig
 
-source ~/.bashrc
+. ~/.bashrc
+
+# neobundleの導入
+which git > /dev/null
+if [ $? -eq 0 ]; then
+    echo git clone git://github.com/Shougo/neobundle.vim.git ~/.vim/bundle/neobundle.vim
+fi
