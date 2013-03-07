@@ -11,4 +11,4 @@ DEFAULT="${ESC}0m\]"
 
 # Prompt
 PROMPT_COLOR="${ESC}3`expr \`date +%s\` % 6 + 1`m"
-PS1="${PROMPT_COLOR} [ *_*] < \w\n |-C  |-C \[\033[0m\]"
+PS1="${PROMPT_COLOR} [ *_*] < \H:\w\n |-C  |-C \[\033[0m\]"
