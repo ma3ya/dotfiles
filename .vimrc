@@ -144,6 +144,9 @@ NeoBundle 'git://github.com/tpope/vim-fugitive.git'
 NeoBundle 'git://github.com/Lokaltog/vim-powerline.git'
 NeoBundle 'git://github.com/StanAngeloff/php.vim.git'
 NeoBundle 'git://github.com/vim-scripts/sudo.vim.git'
+NeoBundle 'git://github.com/Shougo/unite.vim.git'
+NeoBundle 'git://github.com/h1mesuke/unite-outline.git'
+NeoBundle 'git://github.com/airblade/vim-gitgutter.git'
 NeoBundle 'gtags.vim'
 
 " === Plugin Settings ===
