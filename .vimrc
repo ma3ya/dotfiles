@@ -3,7 +3,7 @@
 set encoding=utf-8
 " ファイルエンコーディング
 set fileencoding=utf-8
-set fileencodings=iso-2022-jp,utf-8,euc-jp,cp932
+set fileencodings=utf-8,iso-2022-jp,euc-jp,cp932
 " 改行コード
 set fileformats=unix
 " vimが認識する文字幅を調整する
